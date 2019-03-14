@@ -14,12 +14,12 @@
             let script = document.createElement('script')
             script.src = '/pay'
             document.body.appendChild(script)
-            // script.onload = function (){
-            //     alert('打钱成功')
-            //     amount.innerText = amount.innerText - 1 // 不刷新页面
-            // }
+            script.onload = function (e){
+                e.currentTarget.remove() // 移除script
+            }
             script.onerror = function (){
                 alert('打钱失败')
+                e.currentTarget.remove()
             }
 
 
