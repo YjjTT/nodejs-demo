@@ -11,16 +11,31 @@
     <button id="button">付款</button>
     <script>
         button.addEventListener('click', function(e){
-            let image = document.createElement('img')
-            image.src = '/pay'
-            image.onload = function(){
+            let script = document.createElement('script')
+            script.src = '/pay'
+            document.body.appendChild(script)
+            script.onload = function (){
                 alert('打钱成功')
                 amount.innerText = amount.innerText - 1 // 不刷新页面
-                // window.location.reload() // 刷新页面
             }
-            image.onerror = function(){
+            script.onerror = function (){
                 alert('打钱失败')
             }
+
+
+
+
+
+            // let image = document.createElement('img')
+            // image.src = '/pay'
+            // image.onload = function(){
+            //     alert('打钱成功')
+            //     amount.innerText = amount.innerText - 1 // 不刷新页面
+            //     // window.location.reload() // 刷新页面
+            // }
+            // image.onerror = function(){
+            //     alert('打钱失败')
+            // }
         })
     </script>
 </body>
