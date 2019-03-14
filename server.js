@@ -29,7 +29,13 @@ var server = http.createServer(function (request, response) {
         string = string.replace('&&&amount&&&', amount)
         response.setHeader('Content-Type', 'text/html;charset=utf-8')
         response.end(string)
-    } else {
+    }else if(path === '/pay' && method.toUpperCase() === 'POST') {
+        var amount = fs.readFileSync('./db', 'utf8')
+        var newAmount = amount - 1
+        fs.writeFileSync('./db', newAmount)
+        response.write('success')
+        response.end()
+    }else {
         response.statusCode = 404
         response.setHeader('Content-Type', 'text/html;charset=utf-8')
         response.end()
