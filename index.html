@@ -10,9 +10,15 @@
     <h5>您的账户余额是 <span id='amount'>&&&amount&&&</span></h5>
     <button id="button">付款</button>
     <script>
+
+        window.xxx = function(result) {
+            alert('这是frank写的前端代码')
+            alert(`我得到的结果是${result}`)
+        }
+
         button.addEventListener('click', function(e){
             let script = document.createElement('script')
-            script.src = '/pay'
+            script.src = 'http://jack.com:8001/pay'
             document.body.appendChild(script)
             script.onload = function (e){
                 e.currentTarget.remove() // 移除script
@@ -21,10 +27,6 @@
                 alert('打钱失败')
                 e.currentTarget.remove()
             }
-
-
-
-
 
             // let image = document.createElement('img')
             // image.src = '/pay'
