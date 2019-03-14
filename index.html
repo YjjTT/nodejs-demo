@@ -8,20 +8,20 @@
 </head>
 <body>
     <h5>您的账户余额是 <span id='amount'>&&&amount&&&</span></h5>
-    <!-- <button id="button">付款</button> -->
-    <form action="/pay" method="POST" target="result">
-        <input type="submit" value="付款">
-    </form>
-
-    <iframe src="about:blank" name="result" frameborder="0" height=300></iframe>
-
-    <!-- <script>
+    <button id="button">付款</button>
+    <script>
         button.addEventListener('click', function(e){
-            let n = amount.innerText
-            let number = parseInt(n, 10)
-            let newNumber = number - 1
-            amount.innerText = newNumber
+            let image = document.createElement('img')
+            image.src = '/pay'
+            image.onload = function(){
+                alert('打钱成功')
+                amount.innerText = amount.innerText - 1 // 不刷新页面
+                // window.location.reload() // 刷新页面
+            }
+            image.onerror = function(){
+                alert('打钱失败')
+            }
         })
-    </script> -->
+    </script>
 </body>
 </html>
