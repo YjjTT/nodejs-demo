@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>打钱</title>
+</head>
+<body>
+    <h5>您的账户余额是 <span id='amount'>&&&amount&&&</span></h5>
+    <button id="button">付款</button>
+
+    <script>
+        button.addEventListener('click', function(e){
+            let n = amount.innerText
+            let number = parseInt(n, 10)
+            let newNumber = number - 1
+            amount.innerText = newNumber
+        })
+    </script>
+</body>
+</html>
