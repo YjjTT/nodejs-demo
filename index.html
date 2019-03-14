@@ -12,13 +12,13 @@
     <script>
 
         window.xxx = function(result) {
-            alert('这是frank写的前端代码')
             alert(`我得到的结果是${result}`)
+            amount.innerText = amount.innerText - 1
         }
 
         button.addEventListener('click', function(e){
             let script = document.createElement('script')
-            script.src = 'http://jack.com:8001/pay'
+            script.src = 'http://jack.com:8001/pay?callbackName=xxx'
             document.body.appendChild(script)
             script.onload = function (e){
                 e.currentTarget.remove() // 移除script
