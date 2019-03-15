@@ -24,11 +24,16 @@ var server = http.createServer(function (request, response) {
     console.log('含查询字符串的路径\n' + pathWithQuery)
 
     if (path === '/') {
-        var string = fs.readFileSync('./index.html', 'utf8')
-        var amount = fs.readFileSync('./db', 'utf8')
-        string = string.replace('&&&amount&&&', amount)
+        var string = fs.readFileSync('./index2.html', 'utf8')
+        response.statusCode = 200
+        
+        // var amount = fs.readFileSync('./db', 'utf8')
+        // string = string.replace('&&&amount&&&', amount)
         response.setHeader('Content-Type', 'text/html;charset=utf-8')
-        response.end(string)
+        // response.end(string)
+
+        response.write(string)
+        response.end()
     } else if (path === '/pay') {
         var amount = fs.readFileSync('./db', 'utf8')
         var newAmount = amount - 1
@@ -58,6 +63,25 @@ var server = http.createServer(function (request, response) {
         //     response.statusCode = 400
         //     response.write('fail')
         // }
+        response.end()
+    } else if(path === '/main.js'){
+        var string = fs.readFileSync('./main.js', 'utf8')
+        response.statusCode = 200
+        response.setHeader('Content-Type', 'text/javascript;charset=utf-8')
+        response.write(string)
+        response.end()
+    } else if(path === '/xxx'){
+        response.statusCode = 200
+        response.setHeader('Content-Type', 'text/xml')
+        response.write(`
+            <?xml version="1.0" encoding="UTF-8"?>
+            <note>
+              <to>Tove</to>
+              <from>Jani</from>
+              <heading>Reminder</heading>
+              <body>Don't forget me this weekend!</body>
+            </note>
+        `)
         response.end()
     } else {
         response.statusCode = 404
