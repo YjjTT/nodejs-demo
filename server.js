@@ -73,6 +73,7 @@ var server = http.createServer(function (request, response) {
     } else if(path === '/xxx'){
         response.statusCode = 200
         response.setHeader('Content-Type', 'text/json;charset=utf-8')
+        response.setHeader('Access-Control-Allow-Origin', 'http://frank.com:8001') // 加上这句话可以两个不同源的网站互相读取AJAX
         response.write(`
         {
             "note":{
