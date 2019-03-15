@@ -72,9 +72,8 @@ var server = http.createServer(function (request, response) {
         response.end()
     } else if(path === '/xxx'){
         response.statusCode = 200
-        response.setHeader('Content-Type', 'text/xml')
+        response.setHeader('Content-Type', 'text/xml;charset=utf-8')
         response.write(`
-            <?xml version="1.0" encoding="UTF-8"?>
             <note>
               <to>Tove</to>
               <from>Jani</from>

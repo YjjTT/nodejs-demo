@@ -6,6 +6,10 @@ myButton.addEventListener('click', (e)=>{
             if(request.status === 200){
                 console.log("请求成功")
                 console.log(request.responseText)
+                parser = new DOMParser()
+                let xmlDoc = parser.parseFromString(request.responseText, "text/xml")
+                let c = xmlDoc.getElementsByTagName('from')[0].textContent
+                console.log(c)
             }else if(request.status >= 400){
                 console.log("请求失败")
             }
