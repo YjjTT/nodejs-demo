@@ -15,6 +15,8 @@ var server = http.createServer(function (request, response) {
     if (pathWithQuery.indexOf('?') >= 0) {
         queryString = pathWithQuery.substring(pathWithQuery.indexOf('?'))
     }
+
+    
     var path = parsedUrl.pathname
     var query = parsedUrl.query
     var method = request.method
@@ -74,6 +76,7 @@ var server = http.createServer(function (request, response) {
         response.statusCode = 200
         response.setHeader('Content-Type', 'text/json;charset=utf-8')
         response.setHeader('Access-Control-Allow-Origin', 'http://frank.com:8001') // 加上这句话可以两个不同源的网站互相读取AJAX
+        // response.setHeader('Access-Control-Allow-Origin', '*') // 允许所有人访问
         response.write(`
         {
             "note":{
